@@ -1,0 +1,55 @@
+<div class="text-center mt-3">
+  <h2>{{pagination?.totalItems}} - tane eşleşme bulundu</h2>
+</div>
+
+<div class="container mt-3">
+  <form #form="ngForm" class="form-inline mb-3" (ngSubmit)="listMembers()" autocomplete="off">
+    <div class="form-group">
+      <label>Yaşından:</label>
+      <input type="number" class="form-control ml-1" style="width: 70px;" name="minAge" [(ngModel)]="minAge">
+    </div>
+    <div class="form-group px-2">
+      <label>Yaşına:</label>
+      <input type="number" class="form-control ml-1" style="width: 70px;" name="maxAge" [(ngModel)]="maxAge">
+    </div>
+    <div class="form-group px-2">
+      <label>Cinsiyet:</label>
+      <select name="gender" [(ngModel)]="gender" style="width: 130px;" class="form-control ml-1">
+        <option value="male">
+          Erkekler
+        </option>
+        <option value="female">
+          Kadınlar
+        </option>
+
+      </select>
+    </div>
+    <button class="btn btn-primary ml-1" type="submit">Apply filters</button>
+    <button class="btn btn-info ml-1" (click)="resetFilters()" type="submit" >Filtreyi Sıfırla</button>
+
+    <div class="col">
+      <div class="btn-group float-right">
+        <button type="button" class="btn btn-primary" btnRadio="lastActive" name="orderBy" (click)="listMembers()" [(ngModel)]="orderBy">Son Aktifler</button>
+        <button type="button" class="btn btn-primary" btnRadio="created" name="orderBy" (click)="listMembers()" [(ngModel)]="orderBy">Yeni kullancılar</button>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+
+
+
+
+<div class="row">
+  <div *ngFor="let member of members" class="col-2">
+    <app-member-card [member]="member"></app-member-card>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center" *ngIf="pagination">
+  <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage"
+    [(ngModel)]="pagination.currentPage" (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;"
+    firstText="&laquo;" lastText="&raquo;">
+  </pagination>
+</div>

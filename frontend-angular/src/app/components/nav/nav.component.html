@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" >
+  <div class="container">
+    <a class="navbar-brand" href="#">Tanışma App</a>
+
+    <ul class="navbar-nav me-auto mb-2 mb-md-0"  >
+      <ng-container *ngIf="authService.isAuthenticated()">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/lists">Eşleşmeler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/members">Üyeler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/messages">Mesajlar</a>
+        </li>
+      </ng-container>
+    </ul>
+
+
+    <div class="dropdown" *ngIf="authService.isAuthenticated() && member" dropdown >
+      <img src="{{member.photoUrl || './assets/user.png' }}" alt="{{member.userName}}" class="mx-2">
+      <a class="dropdown-toggle text-light text-decoration-none" dropdownToggle>Hoşgeldin {{name | titlecase}} </a>
+      <div class="dropdown-menu" *dropdownMenu>
+        <a routerLink="/member/edit" class="dropdown-item">Profili Düzenle</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="logOut()">Çıkış Yap</a>
+      </div>
+    </div>
+
+      <form *ngIf="!authService.isAuthenticated()" [formGroup]="loginForm" class="d-flex" autocomplete="off">
+        <input formControlName="userName" class="form-control me-2" type="text" placeholder="Kullanıcı Adı">
+        <input formControlName="password" class="form-control me-2" type="password" placeholder="Şifre">
+        <button class="btn btn-outline-success" (click)="login()" type="submit">Login</button>
+      </form>
+    </div>
+</nav>

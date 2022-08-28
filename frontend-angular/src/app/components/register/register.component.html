@@ -1,0 +1,50 @@
+<form [formGroup]="registerForm"  autocomplete="off">
+  <h2 class="text-center text-primary">Kayıt Ol</h2>
+  <hr>
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="username"   placeholder="Kullanıcı Adı">
+  </div>
+  <div class="form-group mt-3">
+    <input type="password" class="form-control" formControlName="password"  placeholder="Şifre">
+  </div>
+  <div class="form-group mt-3">
+    <select class="form-control" formControlName="gender" >
+      <option value="" disabled selected>Cinsiyet Seçiniz</option>
+      <option value="male">Erkek</option>
+      <option value="female">Kadın</option>
+    </select>
+  </div>
+  <div class="form-group mt-3">
+    <input type="text" class="form-control" formControlName="knownAs"  placeholder="Takma Ad">
+  </div>
+  <div class="form-group mt-3">
+    <input  class="form-control" [type]="'date'" formControlName="dateOfBirth"   placeholder="Doğum Tarihi">
+  </div>
+  <div class="form-group mt-3">
+    <input type="text" class="form-control" formControlName="city"   placeholder="Şehir">
+  </div>
+  <div class="form-group mt-3">
+    <input type="text" class="form-control" formControlName="country"  placeholder="Ülke">
+  </div>
+
+  <div class="form-group text-center mt-3">
+    <button class="btn btn-success mr-2" (click)="register()" type="submit" style="margin-right: 5px;">Kayıt Ol</button>
+    <button class="btn btn-danger mr-2" (click)="cancel()" type="button">İptal</button>
+  </div>
+</form>
+
+
+
+
+
+
+
+
+<!-- gender
+username
+knownas
+dateofbirth
+city
+country
+password -->
+
