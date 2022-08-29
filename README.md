@@ -1,4 +1,5 @@
-
+Öğrenilenler: SignalR - Medya dosyalarını Cloud sitesine kaydetme - NetCore Api Sayfalama 
+Eksiklikler ve Hatalar: Temiz kod yazımından uzaklaşılmış olduğunu farkettim. Diğer projelerim için bir ders oldu.
 
 
 
